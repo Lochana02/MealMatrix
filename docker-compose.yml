@@ -1,26 +1,32 @@
 services:
-  mongo:
-    image: mongo:7
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
   backend:
-    build: ./backend
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: cliper-backend
     ports:
       - "5000:5000"
     env_file:
-      - ./backend/.env
-    depends_on:
-      - mongo
+      - ./Backend/.env
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+    command: sh -c "npm install && node index.js"
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: cliper-frontend
     ports:
-      - "3000:3000"
+      - "5173:5173"
     depends_on:
       - backend
-
-volumes:
-  mongo_data:
+    env_file:
+      - ./Frontend/.env
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true

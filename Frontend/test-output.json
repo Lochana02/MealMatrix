@@ -1,0 +1,29 @@
+{
+  "count": 1,
+  "orders": [
+    {
+      "_id": "69d4a7bc8cf940a4331f50e9",
+      "orderId": "CBC0001-2996",
+      "email": "dave@gmail.com",
+      "orderedItems": [
+        {
+          "itemType": "service",
+          "itemId": "ITEM-1775544252916-1",
+          "name": "sdfsdfd",
+          "price": 1000,
+          "quantity": 1,
+          "image": "",
+          "_id": "69d4a7bc8cf940a4331f50ea"
+        }
+      ],
+      "totalAmount": 1000,
+      "status": "Processing",
+      "name": "Dave Luke",
+      "address": "123, LA, CA",
+      "phone": "0763795745",
+      "createdAt": "2026-04-07T06:44:12.997Z",
+      "updatedAt": "2026-04-07T06:44:12.998Z",
+      "__v": 0
+    }
+  ]
+}
